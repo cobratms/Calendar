@@ -8,8 +8,8 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "employeeID")
-    private long employeeID;
+    @Column(name = "id")
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -20,12 +20,12 @@ public class Employee {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
-    public long getEmployeeID() {
-        return employeeID;
+    public long getId() {
+        return id;
     }
 
-    public void setEmployeeID(long employeeID) {
-        this.employeeID = employeeID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,7 +55,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "employeeID=" + employeeID +
+                "employeeID=" + id +
                 ", name=" + name +
                 ", email=" + email +
                 ", dateOfBirth=" + dateOfBirth +

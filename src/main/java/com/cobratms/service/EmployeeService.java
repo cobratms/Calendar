@@ -5,6 +5,8 @@ import com.cobratms.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmployeeService {
 
@@ -15,7 +17,8 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Employee getByEmployeeID(long employee_id) {
-        return employeeRepository.findByEmployeeID(employee_id);
+    public Employee getByEmployeeID(long employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        return employee.orElse(new Employee());
     }
 }

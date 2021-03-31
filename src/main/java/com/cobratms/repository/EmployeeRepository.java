@@ -1,11 +1,11 @@
-package com.cobratms.repos;
+package com.cobratms.repository;
 
-import com.cobratms.entity.Employee;
+import com.cobratms.domain.Employee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepos extends CrudRepository<Employee, Long> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     Employee findByEmployeeID(Long employeeID);
 }

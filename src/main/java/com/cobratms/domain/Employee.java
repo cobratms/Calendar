@@ -1,4 +1,4 @@
-package com.cobratms.entity;
+package com.cobratms.domain;
 
 import javax.persistence.*;
 import java.util.Date;

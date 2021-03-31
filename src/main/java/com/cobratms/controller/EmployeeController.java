@@ -1,6 +1,6 @@
 package com.cobratms.controller;
 
-import com.cobratms.entity.Employee;
+import com.cobratms.domain.Employee;
 import com.cobratms.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

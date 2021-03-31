@@ -1,21 +1,21 @@
 package com.cobratms.service;
 
-import com.cobratms.entity.Employee;
-import com.cobratms.repos.EmployeeRepos;
+import com.cobratms.domain.Employee;
+import com.cobratms.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
 
-    private EmployeeRepos employeeRepos;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepos employeeRepos) {
-        this.employeeRepos = employeeRepos;
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     public Employee getByEmployeeID(long employee_id) {
-        return employeeRepos.findByEmployeeID(employee_id);
+        return employeeRepository.findByEmployeeID(employee_id);
     }
 }

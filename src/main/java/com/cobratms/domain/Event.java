@@ -1,38 +1,47 @@
 package com.cobratms.domain;
 
 import javax.persistence.*;
-import java.sql.Time;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.UUID;
 
+/**
+ * Event.java - linked to a specific user-defined calendar.
+ * Provides information about the event, its date and duration.
+ *
+ * @author cobratms
+ * @version  1.0
+ */
 @Entity
 @Table(name = "events")
 public class Event {
 
     //region Attributes
     @Id
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
     private long eventId;
 
-    @ManyToOne
-    @JoinColumn(name = "calendar_id")
-    private Calendar calendarId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "calendar_id", referencedColumnName="calendar_id")
+    private Calendar calendar;
 
     @Column(name = "period_start")
     private Date startPeriod;
 
     @Column(name = "period_end")
     private Date endPeriod;
-
-    @Column(name = "event_date")
-    private Date date;
-
-    @Column(name = "time_start")
-    private Time timeStart;
-
-    @Column(name = "time_end")
-    private Time timeEnd;
     //endregion
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId=" + eventId +
+                ", calendar=" + calendar +
+                ", startPeriod=" + startPeriod +
+                ", endPeriod=" + endPeriod +
+                '}';
+    }
 
     //region Getters&Setters
     public long getEventId() {
@@ -43,12 +52,12 @@ public class Event {
         this.eventId = eventId;
     }
 
-    public Calendar getCalendarId() {
-        return calendarId;
+    public Calendar getCalendar() {
+        return calendar;
     }
 
-    public void setCalendarId(Calendar calendarId) {
-        this.calendarId = calendarId;
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 
     public Date getStartPeriod() {
@@ -65,30 +74,6 @@ public class Event {
 
     public void setEndPeriod(Date endPeriod) {
         this.endPeriod = endPeriod;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Time getTimeStart() {
-        return timeStart;
-    }
-
-    public void setTimeStart(Time timeStart) {
-        this.timeStart = timeStart;
-    }
-
-    public Time getTimeEnd() {
-        return timeEnd;
-    }
-
-    public void setTimeEnd(Time timeEnd) {
-        this.timeEnd = timeEnd;
     }
     //endregion
 }

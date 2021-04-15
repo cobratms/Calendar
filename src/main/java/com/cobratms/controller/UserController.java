@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -24,19 +25,26 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/set")
+    @PostMapping
     private void setNewUser(@Valid @RequestBody User user) {
         userService.saveNewUser(user);
     }
 
-    @GetMapping("/get/{userId}")
+    @GetMapping("/{userId}")
     private User getUserById(@PathVariable Long userId) {
         Optional<User> user = userService.getUserById(userId);
-        return user.orElseGet(User::new);
+
+        if(user.isEmpty()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "user not found"
+            );
+        }
+
+        return user.get();
     }
 
-    @DeleteMapping("/delete/{userId}")
-    private void deleteUserbyID(@PathVariable Long userId) {
+    @DeleteMapping("/{userId}")
+    private void deleteUserByID(@PathVariable Long userId) {
         userService.deleteUserById(userId);
     }
 

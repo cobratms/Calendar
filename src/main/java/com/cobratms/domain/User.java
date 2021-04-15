@@ -4,6 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/**
+ * User.java - user who can have calendars.
+ *
+ * @author cobratms
+ * @version  1.0
+ */
+
 @Entity
 @Table(name = "users")
 public class User {

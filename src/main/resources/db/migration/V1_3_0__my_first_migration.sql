@@ -1,1 +1,0 @@
-insert into EMPLOYEE  values (1, 'Max', 'gmail.com', '1967-04-05' );

@@ -2,7 +2,7 @@ package com.cobratms.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Event.java - linked to a specific user-defined calendar.
@@ -27,10 +27,10 @@ public class Event {
     private Calendar calendar;
 
     @Column(name = "period_start")
-    private Date startPeriod;
+    private LocalDateTime startPeriod;
 
     @Column(name = "period_end")
-    private Date endPeriod;
+    private LocalDateTime endPeriod;
     //endregion
 
     @Override
@@ -60,19 +60,19 @@ public class Event {
         this.calendar = calendar;
     }
 
-    public Date getStartPeriod() {
+    public LocalDateTime getStartPeriod() {
         return startPeriod;
     }
 
-    public void setStartPeriod(Date startPeriod) {
+    public void setStartPeriod(LocalDateTime startPeriod) {
         this.startPeriod = startPeriod;
     }
 
-    public Date getEndPeriod() {
+    public LocalDateTime getEndPeriod() {
         return endPeriod;
     }
 
-    public void setEndPeriod(Date endPeriod) {
+    public void setEndPeriod(LocalDateTime endPeriod) {
         this.endPeriod = endPeriod;
     }
     //endregion
